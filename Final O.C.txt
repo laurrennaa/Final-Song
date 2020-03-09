@@ -1,0 +1,512 @@
+# Return of the Mack
+use_bpm 95
+#using a specific gives my song a certain key to play in on the piano
+
+#im defining a normal function which is measure four because the measure is repeated
+define :m4 do
+  play :e5
+  print
+  sleep 0.5
+  play :e5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :c5
+  sleep 0.5
+  play :e5
+  sleep 1
+  play :a4
+  sleep 0.5
+  play :c5
+  sleep 0.5
+end
+
+#measures 2 and 3
+define :m2n3 do
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :a4
+  sleep 0.5
+  play :c5
+  sleep 1
+  play :a4
+  sleep 0.5
+  play :c5
+  sleep 0.5
+end
+
+#defining my parameterized function
+define :parameterised_function do |note1, note2, note3, note4, note5, note6|
+  play note1
+  sleep 0.5
+  play note2
+  sleep 0.5
+  play note3
+  sleep 0.5
+  play note4
+  sleep 0.5
+  play note5
+  sleep 1.5
+  play note6
+  sleep 0.5
+end
+
+#second parameterized function
+define :long_function do |not1, not2, not3, not4, not5, not6, not7|
+  play not1
+  sleep 0.5
+  play not2
+  sleep 0.5
+  play not3
+  sleep 0.5
+  play not4
+  sleep 0.5
+  play not5
+  sleep 1
+  play not6
+  sleep 0.5
+  play not7
+  sleep 0.5
+end
+
+#beginning vocals of the song (intro)
+sample "C:/Users/lauren_larios/Downloads/Custom song - ROTM/friday_sample.mp3"
+sleep 18
+
+#defining a so i can use it to increase and decrease the amp creating my fade in intro
+a = 0.5
+
+# start music
+play :a4, amp: a
+sleep 0.5
+play :c5, amp: a
+sleep 0.5
+
+live_loop :background do
+  9.times do
+    play :g3, amp: a
+    play :a2, amp: a
+    sleep 2
+    play :f3, amp: a
+    play :d3, amp: a
+    sleep 2
+    a = a + 0.5
+    if a == 4.5
+      stop
+    end
+    print a
+  end
+end
+
+# Measure 2
+m2n3
+
+# Measure 3
+m2n3
+
+# Measure 4
+m4
+
+# Measure 5
+long_function :e5, :e5, :d5, :c5, :e5, :a4, :c5
+
+# Measure 6
+m4
+
+# Measure 7
+long_function :d5, :d5, :d5, :a4, :c5, :a4, :c5
+
+# Measure 8
+parameterised_function :d5, :d5, :d5, :a4, :c5, :c5
+
+# Measure 9
+parameterised_function :b4, :b4, :a4, :g4, :b4, :c5
+
+
+
+
+# OVERNIGHT CELEBRITY
+use_bpm 140
+
+yuh = "C:/Users/lauren_larios/Downloads/RPReplay_Final1583261546.wav"
+
+notes = [:f2, :e3, :f2, :c3, :g4, :b3, :b3, :b3, :g4]
+
+sleeps = [1.5, 2.25, 0.25, 1.5, 0.5, 0.5, 0.5, 0.5]
+
+b = sample :ambi_choir
+
+i = 0
+
+#defining both parameterized functions
+define :parameterized_function do |note1, note2, note3, note4, note5|
+  play note1
+  sleep 1.5
+  play note2
+  play note3
+  sleep 0.5
+  play note4
+  play note5
+  sleep 2
+end
+
+define :parameterized_function2 do |note1, note2, note3, note4, note5, note6|
+  play note1
+  play note2
+  sleep 0.5
+  play note3
+  play note4
+  sleep 1.5
+  play note3
+  play note4
+  sleep 0.5
+  play note5
+  play note6
+  sleep 2
+  play note5
+  play note6
+  sleep 0.5
+  play note5
+  play note6
+  sleep 0.5
+  play note5
+  play note6
+  sleep 0.5
+  play note5
+  play note6
+  sleep 0.5
+end
+
+# my adlibs
+#randomness
+live_loop :random do
+  sample choose[yuh, b]
+  sleep 9
+end
+
+
+#bottom row notes on sheet music
+live_loop :low_notes do
+  
+  play :bb3
+  play :bb2
+  sleep 1.5
+  play :bb4
+  play :db4
+  play :bb3
+  sleep 1
+  play :bb4
+  play :bb3
+  sleep 1.5
+  
+  play :f3
+  sleep 1.5
+  play :eb4
+  play :c4
+  sleep 1.5
+  play :ab4
+  play :c4
+  sleep 1
+  
+  play :bb3
+  play :bb2
+  sleep 1.5
+  play :bb4
+  play :d4
+  sleep 1.5
+  play :bb4
+  play :bb3
+  sleep 1
+  
+  play :f4
+  sleep 1.5
+  play :ab4
+  sleep 1.5
+  play :ab4
+  play :c4
+  play :ab3
+  sleep 1
+  
+  play :bb3
+  play :f3
+  sleep 1.5
+  play :bb4
+  play :bb3
+  sleep 1.5
+  play :bb4
+  play :bb3
+  sleep 1
+  
+  play :f3
+  sleep 1.5
+  play :ab4
+  play :eb4
+  sleep 2.25
+  play :f3
+  sleep 0.25
+  
+  play :c4
+  sleep 1.5
+  play :g5
+  play :eb4
+  play :c4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :bb4
+  play :g5
+  sleep 0.5
+  
+  play :f3
+  sleep 2
+  play :f3
+  sleep 2
+  
+  play :bb
+  sleep 1.5
+  play :f3
+  play :b
+  sleep 1.5
+  play :bb3
+  play :bb2
+  sleep 1
+  
+  play :f3
+  sleep 1.5
+  play :eb4
+  play :c4
+  sleep 1.5
+  play :ab4
+  play :eb4
+  play :c4
+  sleep 1
+  
+  play :bb3
+  play :bb2
+  sleep 1.5
+  play :bb4
+  play :g3
+  play :eb4
+  sleep 1.5
+  play :bb4
+  play :bb3
+  sleep 1
+  
+  play :f3
+  sleep 1.5
+  play :eb4
+  play :c4
+  sleep 1.5
+  play :ab4
+  play :c4
+  sleep 1
+  
+  play :bb3
+  sleep 1.5
+  play :bb4
+  play :db4
+  sleep 1.5
+  play :bb4
+  play :db4
+  play :bb3
+  sleep 1
+  
+  play :f3
+  sleep 1.5
+  play :ab4
+  play :eb4
+  sleep 1.5
+  play :ab4
+  sleep 1
+  
+  play :c4
+  sleep 2
+  play :bb4
+  play :g4
+  play :eb4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :bb4
+  sleep 0.5
+  play :bb4
+  play :c4
+  sleep 0.5
+  
+  play :f3
+  sleep 2
+  play :f3
+  sleep 1.5
+end
+
+#The low notes play first as an introduction to the rest of the song so the high notes know to sleep for 32 beats while the other loop plays once
+sleep 32
+
+#top row of notes on sheet music
+live_loop :high_notes do
+  
+  sleep 1
+  play :f3
+  play :f4
+  sleep 1
+  play :ab4
+  sleep 1
+  play :c5
+  sleep 1
+  
+  play :bb4
+  sleep 1.5
+  play :ab5
+  play :ab4
+  sleep 0.5
+  play :f5
+  play :f4
+  sleep 2
+  
+  sleep 1
+  play :f5
+  play :f4
+  sleep 1
+  play :ab5
+  play :ab4
+  sleep 1
+  play :c5
+  sleep 1
+  
+  play :bb4
+  sleep 1.5
+  play :ab5
+  play :ab4
+  sleep 0.5
+  play :c6
+  play :c5
+  sleep 2
+  
+  sleep 1
+  play :f5
+  play :f4
+  sleep 1
+  play :ab5
+  play :ab4
+  sleep 1.5
+  play :c6
+  play :c5
+  sleep 0.5
+  
+  play :bb5
+  play :bb4
+  sleep 1.5
+  
+  parameterized_function2 :ab5, :ab4, :f5, :f4, :g5, :g4
+  
+  
+  play :f5
+  play :f4
+  sleep 2
+  
+  
+  play :g5
+  play :f4
+  sleep 1.5
+  play :c5
+  sleep 0.5
+  
+  sleep 1
+  play :f5
+  play :f4
+  sleep 1
+  play :ab5
+  play :ab4
+  sleep 1
+  play :c5
+  sleep 1
+  
+  #with the parameterized function you can repeat the set up of code and youre able to chnage the notes when you call the function
+  parameterized_function :bb4, :ab5, :ab4, :f5, :f4
+  
+  sleep 1
+  play :f5
+  play :f4
+  sleep 1
+  play :ab5
+  play :ab4
+  sleep 1
+  play :c5
+  sleep 1
+  
+  parameterized_function :bb4, :ab5, :ab4, :c6, :c5
+  
+  sleep 1
+  play :f5
+  play :f4
+  sleep 1
+  play :ab4
+  sleep 1.5
+  play :c5
+  sleep 0.5
+  
+  play :bb4
+  sleep 1.5
+  
+  #my array which plays both the notes and sleeps together
+  8.times do
+    play notes[i]
+    sleep 1
+    # increase the value of i each time before the 8.times do loop restarts
+    i = i + 1
+  end
+  
+  8.times do
+    play sleeps[i]
+    i = i + 1
+  end
+  
+  play :ab5
+  play :ab4
+  sleep 0.5
+  play :f5
+  play :f4
+  sleep 1.5
+  play :f5
+  play :f4
+  sleep 0.5
+  play :g5
+  play :g4
+  sleep 2
+  play :g5
+  play :g4
+  sleep 0.5
+  play :g5
+  play :g4
+  sleep 0.5
+  play :g5
+  play :g4
+  sleep 0.5
+  play :g5
+  play :g4
+  sleep 0.5
+  
+  
+  play :f5
+  play :f4
+  sleep 2
+  play :f5
+  play :f4
+  sleep 1.5
+  play :c
+  sleep 0.5
+  #printing the code helps me see when the code ends
+  print"high notes"
+  stop
+end
+
+play sample :ambi_swoosh
+
